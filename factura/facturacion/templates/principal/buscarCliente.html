@@ -52,7 +52,7 @@
                 <td>{{ cliente.tipoCliente }}</td>
                 <td>
                     <!-- Button ir a modificar -->
-                    <a href="{% url 'modificarCliente' id=cliente.pk %}" class="btn btn-info btn-sm "></a>
+                    <a href="{% url 'modificarCliente' id=cliente.id %}" class="btn btn-info btn-sm">Modificar</a>
                 </td>
             </tr>
             {% endfor %}

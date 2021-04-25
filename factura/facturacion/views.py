@@ -52,11 +52,18 @@ def buscarCliente(request):
 
 
 @login_required
-def modificarCliente(request, id):
-    clienteB = get_object_or_404(Cliente, pk=id)
-    cliente = Cliente.objects.get(id=pk)
-    data = {
-        'form' : ClienteForm(instance = clienteB)
-    }
-    
-    return render(request, 'principal/modificarCliente.html', {'cliente' : cliente })
+def modificarCliente(request, id):    
+    cliente = get_object_or_404(Cliente, id=id)
+    print("Este valor", id )
+    print("Este valor", cliente )
+
+    if request.method == "POST":
+            form = ClienteForm(request.POST, request.FILES, instance=cliente)
+            if form.is_valid():
+                cliente = form.save()
+                cliente.save()
+                messages.success(request, 'Cliente Modificado con Exito')
+                return redirect('buscarCliente')
+    else:
+        form = ClienteForm(instance=cliente)
+    return render(request, 'principal/modificarCliente.html', {'form':form})
