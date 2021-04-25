@@ -13,13 +13,13 @@ class Cliente(models.Model):
         ("CEDULA", 'CEDULA'),
         ("RUC", 'RUC'),
         ("PASAPORTE", 'PASAPORTE'),
-        ("IDENTIFICACION_EXTERIOR", 'IDENTIFICACION DEL EXTERIOR')
+        ("IDENTIFICACION DEL EXTERIOR", 'IDENTIFICACION DEL EXTERIOR')
     ]
     tipoIdentificacion = models.CharField(verbose_name="Tipo Identificacón", max_length=50, choices= select_tipoIdentificacion, default="CEDULA",)
     identificacion = models.CharField(verbose_name="Identificacón", max_length=50, unique = True )
     select_tipoCliente = [
         ("CLIENTE", 'CLIENTE'),
-        ("SUJETO_RETENIDO", 'SUJETO RETENIDO'),
+        ("SUJETO RETENIDO", 'SUJETO RETENIDO'),
         ("DESTINATARIO", 'DESTINATARIO'),
     ]
     tipoCliente = models.CharField(verbose_name="Tipo Cliente", max_length=50, choices= select_tipoCliente, default="CLIENTE",)

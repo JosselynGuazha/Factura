@@ -39,10 +39,10 @@ def buscarCliente(request):
 
     if identificacionGet and tipoIdentificacionGet:
         if tipoIdentificacionGet == 'TODOS':
-            cliente = Cliente.objects.filter(identificacion = identificacionGet)
+            cliente = Cliente.objects.get(identificacion = identificacionGet)
             cont = Cliente.objects.filter(identificacion = identificacionGet).count()
         else:
-            cliente = Cliente.objects.filter(identificacion = identificacionGet, tipoIdentificacion = tipoIdentificacionGet)
+            cliente = Cliente.objects.filter(identificacion = identificacionGet, tipoIdentificacion = tipoIdentificacionGet).first()
             cont = Cliente.objects.filter(identificacion = identificacionGet, tipoIdentificacion = tipoIdentificacionGet).count()
         if cont == 0:
             context = {'message' : 'Cliente no existe'}
@@ -54,16 +54,16 @@ def buscarCliente(request):
 @login_required
 def modificarCliente(request, id):    
     cliente = get_object_or_404(Cliente, id=id)
-    print("Este valor", id )
-    print("Este valor", cliente )
 
     if request.method == "POST":
             form = ClienteForm(request.POST, request.FILES, instance=cliente)
             if form.is_valid():
                 cliente = form.save()
                 cliente.save()
+                context = {'data' : cliente}
                 messages.success(request, 'Cliente Modificado con Exito')
-                return redirect('buscarCliente')
+                return render(request, 'principal/buscarCliente.html', context)
+
     else:
         form = ClienteForm(instance=cliente)
     return render(request, 'principal/modificarCliente.html', {'form':form})
