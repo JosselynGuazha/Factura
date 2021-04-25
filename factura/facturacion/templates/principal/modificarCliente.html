@@ -1,0 +1,106 @@
+{% extends 'principal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row" style="margin-top: 10%;">
+    <h4>{{ titulo }}</h4>
+    {% if messages %}
+    <div class="row">
+        <div class="col-sm-12">
+            {% for message in messages %}
+            <p class="alert alert-success"> {{ message }} </p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <form method="POST" class="post-form" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                {% if form.razonSocial.errors %}
+                <p>Ingresar bien Razón Social.</p>
+                {% endif %}
+                <label for="razonSocial">Apellidos y Nombres / Razón Social</label>
+                {{ form.razonSocial }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if form.tipoIdentificacion.errors %}
+                <p>Ingresar bien Tipo Identificación .</p>
+                {% endif %}
+                <label for="tipo">Tipo Identificación</label>
+                {{ form.tipoIdentificacion }}
+                <!-- <select name="tipo" id="tipo">
+                    <option value="ruc">RUC</option>
+                    <option value="ci">CI</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="id_exterior">Identificación Exterior</option>
+                </select> -->
+            </div>
+            <div class="col">
+                {% if form.identificacion.errors %}
+                <p>Ingresar bien Número de Identificación.</p>
+                {% endif %}
+                <label for="identificacion">Número de Identificación </label>
+                {{ form.identificacion }}
+            </div>
+        </div>
+
+        <div>
+            {% if form.identificacion.errors %}
+            <p>Ingresar bien Tipo Cliente</p>
+            {% endif %}
+            <label for="tipoCliente">Tipo Cliente</label>
+            {{ form.tipoCliente }}
+            <!-- <select name="tipoCliente" id="tipoCliente">
+                <option value="cliente">CLIENTE</option>
+                <option value="sujetoRetenido">SUJETO RETENIDO</option>
+                <option value="destinatario">DESTINATARIO</option>
+            </select> -->
+        </div>
+        <div>
+            {% if form.direccion.errors %}
+            <p>Ingresar bien Dirección</p>
+            {% endif %}
+            <label for="direccionn">Dirección</label>
+            {{ form.direccion }}
+        </div>
+        <div>
+            <div>
+                {% if form.telefocnoConvencional.errors %}
+                <p>Ingresar bien Teléfono Convencional</p>
+                {% endif %}
+                <label for="telefono Convencional">Teléfono Convencional</label>
+                {{ form.telefocnoConvencional }}
+            </div>
+            <div>
+                {% if form.extension.errors %}
+                <p>Ingresar bien Extensión </p>
+                {% endif %}
+                <label for="extension">Extensión</label>
+                {{ form.extension }}
+            </div>
+        </div>
+        <div>
+            {% if form.telefonoCelular.errors %}
+            <p>Ingresar bien Teléfono </p>
+            {% endif %}
+            <label for="telefono">Teléfono</label>
+            {{ form.telefonoCelular }}
+        </div>
+        <div>
+            {% if form.correoElectronico.errors %}
+            <p>Ingresar bien Correo Electrónico</p>
+            {% endif %}
+            <label for="correoElectronico">Correo Electrónico</label>
+            {{ form.correoElectronico }}
+        </div>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Guardar">
+    </form>
+</div>
+</div>
+<br>
+{% endblock %}

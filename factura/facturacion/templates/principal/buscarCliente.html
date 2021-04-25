@@ -1,0 +1,69 @@
+{% extends 'principal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 10%;">
+    <div>
+        <form method="GET" action="{% url 'buscarCliente' %}">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="tipoIdentificacion">Identificación</label>
+                    <select name="tipoIdentificacion" id="tipoIdentificacion">
+                        <option value="TODOS">TODOS</option>
+                        <option value="CEDULA">CI</option>
+                        <option value="RUC">RUC</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                        <option value="IDENTIFICACION DEL EXTERIOR">IDENTIFICACION DEL EXTERIOR</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="identificacion">Número de Identificación </label>
+                    <input class="form-control" type="text" id="identificacion" name="identificacion">
+                </div>
+            </div>
+
+            <br>
+            <input class="btn btn-primary" type="submit" value="Buscar">
+        </form>
+    </div>
+
+</div>
+
+
+{% if data %}
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Apellidos y Nombres/Razón Social</th>
+                <th>Tipo de identificación</th>
+                <th>Número de Identificación</th>
+                <th>Tipo Cliente</th>
+                <th>Actualizar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in data %}
+            <tr>
+                <td>{{ cliente.razonSocial }}</td>
+                <td>{{ cliente.tipoIdentificacion }}</td>
+                <td>{{ cliente.identificacion }}</td>
+                <td>{{ cliente.tipoCliente }}</td>
+                <td>
+                    <!-- Button ir a modificar -->
+                    <a href="{% url 'modificarCliente' id=cliente.pk %}" class="btn btn-info btn-sm "></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    {% if message %}
+    <h1>{{ message }}</h1>
+    {% endif %}
+    {% endif %}
+</div>
+<br>
+
+{% endblock %}

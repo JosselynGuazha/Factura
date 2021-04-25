@@ -1,0 +1,217 @@
+{% extends 'principal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Encabezado -->
+<div class="row" style="margin-top: 10%;">
+	<h4>Emisor</h4>
+	<span class="border">
+		<form>
+			<div class="col">
+				<label for="ruc">RUC</label>
+				<input type="text" id="ruc">
+			</div>
+			<div class="col">
+				<label for="nombreComercial">Nombre Comercial</label>
+				<input type="text" id="nombreComercial">
+			</div>
+			<div class="col">
+				<label for="razonSocial">Apellidos y Nombres / Razón Social </label>
+				<input type="text" id="razonSocial">
+			</div>
+			<div class="col">
+				<label for="direccionMatriz">Dirección Matriz</label>
+				<input type="text" id="direccionMatriz">
+			</div>
+			<div class="col">
+				<label for="direccionEstablecimiento">Dirección Estableciemitno</label>
+				<input type="text" id="direccionEstablecimiento">
+			</div>
+		</form>
+	</span>
+
+
+	<!-- Identificacion factura -->
+	<h4 style="margin-top: 3%;">Identificación del Comprobante</h4>
+
+	<form>
+		<div class="row">
+			<div class="col">
+				<label for="numeroFactura">NRO.</label>
+				<input type="number" id="numeroFactura">
+			</div>
+			<div class="col">
+				<label for="claveAcceso">Clave de Acceso</label>
+				<input type="number" id="claveAcceso">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label for="fecha">Fecha de Emisión</label>
+				<input type="date" class="form-control" id="fecha">
+			</div>
+			<div class="col">
+				<label for="guiaRemision">Guía Remisión</label>
+				<input type="text" class="form-control" id="guiaRemision">
+			</div>
+		</div>
+	</form>
+
+
+	<!-- Cliente -->
+	<span class="border">
+		<h4 style="margin-top: 3%;">Datos del Comprador</h4>
+		<form action="">
+			<div class="row">
+				<div class="col">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="tipoComprador" id="consumidorFinal"
+							value="option1" checked>
+						<label class="form-check-label" for="consumidorFinal"> Consumidor Final </label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="tipoComprador" id="tipoIdentifi"
+							value="option2">
+						<label class="form-check-label" for="tipoIdentifi">RUC/CI/PASAPORTE/ID EXTERIOR </label>
+					</div>
+				</div>
+				<div class="col">
+					<div class="row">
+						<div class="col">
+							<input type="text" id="identificador">
+						</div>
+						<div class="col">
+							<button type="button" class="btn btn-light btn-sm">Buscar</button>
+							<button type="button" class="btn btn-dark btn-sm">Nuevo Cliente</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+	</span>
+
+
+	<div>
+		<label for="razonSocial">Razon Social</label>
+		<input type="text" id="razonSocial">
+	</div>
+	<div>
+		<label for="direccionn">Dirección</label>
+		<input type="text" id="direccionn">
+	</div>
+	</form>
+</div>
+
+
+<h4 style="margin-top: 3%;">Detalles de Factura</h4>
+<br>
+<input class="btn btn-primary" type="submit" value="Agregar Detalle">
+<br>
+<div class="table-wrapper">
+	<table class="alt">
+		<thead class="thead-light">
+			<tr>
+				<th>Cantidad</th>
+				<th>Código Principal</th>
+				<th>Código Auxiliar</th>
+				<th>Descripción</th>
+				<th>Precio Unitario</th>
+				<th>Subsidio</th>
+				<th>Precio sin Subsidio</th>
+				<th>Descuento</th>
+				<th>Valor Total</th>
+				<th>Valor ICE</th>
+				<th>B.I. IRBPNR</th>
+				<th>Valor IRBPNR</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Item 1</td>
+				<td>Ante turpis integer aliquet porttitor.</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+			</tr>
+			<tr>
+				<td>Item 2</td>
+				<td>Vis ac commodo adipiscing arcu aliquet.</td>
+				<td>19.99</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2"></td>
+				<td>100.00</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<br>
+
+
+
+<h4 style="margin-top: 3%;">Forma de Pago</h4>
+<br>
+<input class="btn btn-primary" type="submit" value="Agregar Detalle">
+
+<div class="table-wrapper">
+	<table class="alt">
+		<thead class="thead-light">
+			<tr>
+				<th>Cantidad</th>
+				<th>Código Principal</th>
+				<th>Código Auxiliar</th>
+				<th>Descripción</th>
+				<th>Precio Unitario</th>
+				<th>Subsidio</th>
+				<th>Precio sin Subsidio</th>
+				<th>Descuento</th>
+				<th>Valor Total</th>
+				<th>Valor ICE</th>
+				<th>B.I. IRBPNR</th>
+				<th>Valor IRBPNR</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Item 1</td>
+				<td>Ante turpis integer aliquet porttitor.</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+				<td>29.99</td>
+			</tr>
+			<tr>
+				<td>Item 2</td>
+				<td>Vis ac commodo adipiscing arcu aliquet.</td>
+				<td>19.99</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2"></td>
+				<td>100.00</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-light btn-sm">Guardar</button>
+		<button type="button" class="btn btn-dark btn-sm">Nuevo</button>
+	</div>
+</div>
+<br>
+
+{% endblock %}
